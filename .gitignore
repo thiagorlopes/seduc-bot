@@ -139,6 +139,3 @@ cython_debug/
 
 # Credentials
 credentials.py
-
-# Heroku production files
-Procfile

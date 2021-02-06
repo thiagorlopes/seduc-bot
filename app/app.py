@@ -1,19 +1,22 @@
+from settings import *
+import os
 import re
 from flask import Flask, request
 import telegram
-from telebot.credentials import bot_token, bot_user_name, URL
 import codigo
 
 
 global bot
 global TOKEN 
-TOKEN = bot_token
+
+TOKEN = os.getenv("bot_token")
+URL = os.getenv("URL")
 bot = telegram.Bot(token=TOKEN)
 
-app = Flask(__name__)
+server = Flask(__name__)
 
 
-@app.route('/{}'.format(TOKEN), methods=['POST'])
+@server.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
 
     # Obtém mensagem em JSON e a transforma em um objeto Telegram
@@ -46,7 +49,7 @@ def respond():
     return "ok"
 
 
-@app.route('/set_webhook', methods=['GET', 'POST'])
+@server.route('/set_webhook', methods=['GET', 'POST'])
 def set_webhook():
     s = bot.setWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
     if s:
@@ -55,9 +58,9 @@ def set_webhook():
         return "Webhook setup failed"
 
 
-@app.route('/')
+@server.route('/')
 def index():
     return '.'
 if __name__ == '__main__':
-    app.run(threaded=True)
+    server.run(threaded=True)
 
