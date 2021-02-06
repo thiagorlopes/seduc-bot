@@ -28,9 +28,7 @@ def respond():
     bot_reply = ""
 
     if text == "/start":
-        bot_reply = """Bem vindo ao assistente de composições analíticas da
-        SEDUC, digite o código desejado. Tabelas disponíveis: Sinapi DEZ/2020
-        e Composições SEDUC"""
+        bot_reply = """Bem vindo ao assistente de composições analíticas da SEDUC, digite o código desejado. Tabelas disponíveis: Sinapi DEZ/2020 e Composições SEDUC"""
     else:
         try:
             text = text.upper()
@@ -41,8 +39,7 @@ def respond():
                 bot_reply = "Código não encontrado"
 
         except Exception:
-            bot_reply = """Código não encontrado nas tabelas de referência
-            SINAPI DEZ/20 e COMP SEDUC, tente novamente. Ex: Sinapi 93281, COMP 001"""
+            bot_reply = """Código não encontrado nas tabelas de referência SINAPI DEZ/20 e COMP SEDUC, tente novamente. Ex: Sinapi 93281, COMP 001"""
 
     bot.sendMessage(chat_id=chat_id, text=bot_reply, reply_to_message_id=msg_id)
 
