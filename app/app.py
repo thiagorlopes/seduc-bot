@@ -41,7 +41,7 @@ def respond():
         except Exception:
             bot_reply = """Código não encontrado nas tabelas de referência SINAPI DEZ/20 e COMP SEDUC, tente novamente. Ex: Sinapi 93281, COMP 001"""
 
-    bot.sendMessage(chat_id=chat_id, text=bot_reply, reply_to_message_id=msg_id)
+    bot.sendMessage(chat_id=chat_id, text=bot_reply)
 
     return "ok"
 
