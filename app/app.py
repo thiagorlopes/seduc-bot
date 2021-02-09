@@ -1,4 +1,5 @@
 from settings import *
+import pandas as pd
 import os
 import re
 from flask import Flask, request
